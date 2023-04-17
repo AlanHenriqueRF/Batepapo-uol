@@ -22,19 +22,27 @@ function online(){
 setInterval(online,5000);
 
 let mensage_server = axios.get('https://mock-api.driven.com.br/api/vm/uol/messages')
-function tem_new_men(){
-    mensage_server = axios.get('https://mock-api.driven.com.br/api/vm/uol/messages')
-    mensage_server.then(mostra_mensagens)
-}
+// let novamensgem = axios.post('https://mock-api.driven.com.br/api/vm/uol/messages', {
+// 	from: user,
+// 	to: "Todos",
+// 	text: document.querySelector('input').innerHTML,
+// 	type: "message" // ou "private_message" para o bônus
+// })
+// let mensage_server1 = [];
 
-setInterval(tem_new_men,3000)
+//  //otimizar por favor 
 
 
 mensage_server.then(mostra_mensagens)
 
+// function posta_novamensagem(){
+
+// }
+
 function mostra_mensagens(mensagens){
     const ul = document.querySelector('.mensagens')
-    // console.log(mensagens.data.length)
+    // console.log(mensagens.data)
+
     for (let i = 0; i< mensagens.data.length;i++){
         if (mensagens.data[i].type === "status"){
             ul.innerHTML += `<li><div class="caixa_mensagem"><h2>(${mensagens.data[i].time})</h2><br>  <h3>${mensagens.data[i].from}</h3>  <h2 class ="texto">entra na sala...</h2></div></li>`
@@ -50,12 +58,20 @@ function mostra_mensagens(mensagens){
             if (i!== 0){continue}
         }
 
-        if (i === 0 ){
-            const primeira_caixa  = document.querySelector('.caixa_mensagem')
-            primeira_caixa.classList.add('primeiro')
-        }
+        // if (i === 0 ){
+        //     const primeira_caixa  = document.querySelector('.caixa_mensagem')
+        //     primeira_caixa.classList.add('primeiro')
+        // }
         }
     }
+
+// setInterval(tem_new_men,3000)
+
+// mensage_server1 = axios.get('https://mock-api.driven.com.br/api/vm/uol/messages')
+// function tem_new_men(){
+//     mensage_server1 = axios.get('https://mock-api.driven.com.br/api/vm/uol/messages')
+//     mensage_server.then(mostra_mensagens)
+// }
 
     
 
